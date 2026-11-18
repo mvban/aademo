@@ -1,0 +1,28 @@
+{
+  "name": "capacitor-app",
+  "version": "1.0.0",
+  "description": "An Amazing Capacitor App",
+  "type": "module",
+  "keywords": [
+    "capacitor",
+    "mobile"
+  ],
+  "scripts": {
+    "start": "bun scripts/start.ts",
+    "build": "bun scripts/build.ts",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name capacitor-app",
+    "deploy:preview": "npm run build && wrangler pages deploy dist --project-name capacitor-app"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/camera": "latest",
+    "@capacitor/core": "latest",
+    "@capacitor/splash-screen": "latest"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "latest",
+    "wrangler": "^4.164.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
