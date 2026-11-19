@@ -23,11 +23,23 @@
       --muted:#827f75; --line:#e9e2d6;
       --ons-primary:var(--green2);
     }
-    * { box-sizing:border-box; }
-    html, body { margin:0; width:100%; min-height:100%; background:var(--cream); color:var(--ink); font-family:'DM Sans',sans-serif; }
+    * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+    html, body { margin:0; width:100%; min-height:100%; background:var(--cream); color:var(--ink); font-family:'DM Sans',sans-serif; overscroll-behavior:none; }
     body { overflow:hidden; }
+    button, ons-button, ons-toolbar-button, a { touch-action:manipulation; }
+    button:active, ons-button:active, .list-item:active, .event-row:active, .quick-action:active { transform:scale(.985); opacity:.88; }
+    .quick-action, .app-card, .profile-panel, .feature-card, .form-card, .list-wrap { animation:rise-in .32s cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes rise-in { from { opacity:0; transform:translateY(9px); } to { opacity:1; transform:translateY(0); } }
+    ons-page .page__content { -webkit-overflow-scrolling:touch; }
+    ons-tabbar { --tabbar-background:var(--paper); }
+    .tabbar__item { transition:color .18s ease,background .18s ease; }
+    .tabbar__item:active { background:#eee9df!important; }
+    .gold-button, .outline-button { transition:transform .16s ease,filter .16s ease; }
+    .gold-button:active { filter:brightness(.94); transform:scale(.98); }
     ons-page, .page__content { background:var(--cream)!important; color:var(--ink); }
-    .page__content { padding-bottom:calc(18px + env(safe-area-inset-bottom)); }
+    .page__content { padding-bottom:calc(24px + env(safe-area-inset-bottom)); }
+    .app-toolbar { padding-top:env(safe-area-inset-top); }
+    .tabbar { padding-bottom:env(safe-area-inset-bottom); }
     .app-toolbar { background:var(--green)!important; color:var(--cream)!important; border:0!important; box-shadow:0 2px 10px #00000012; }
     .toolbar__title { color:var(--cream)!important; font:600 20px 'Playfair Display',serif!important; letter-spacing:2px; }
     .toolbar-button { color:var(--cream)!important; }
@@ -122,7 +134,12 @@
     .profile-panel h3 { font:500 18px 'Playfair Display',serif;margin:0 0 7px; }
     .profile-panel p { color:var(--muted);font-size:11px;line-height:1.6;margin:0 0 12px; }
     .small-badge { display:inline-block;background:#eee7da;color:#6f5838;border-radius:20px;padding:5px 9px;font-size:8px;letter-spacing:1px;text-transform:uppercase; }
-    .modal-card { padding:8px 4px 4px; }
+    .modal-card { padding:8px 4px 4px; max-height:min(76vh,680px); overflow-y:auto; overscroll-behavior:contain; }
+    .modal-card .gold-button { min-height:46px; }
+    .field input:focus,.field select:focus,.field textarea:focus { border-color:var(--gold); box-shadow:0 0 0 3px #c7a77a22; }
+    .success-mark { width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#e4ecdf;color:#34543b;font-size:23px;margin:4px 0 13px; }
+    .dialog-mask { backdrop-filter:blur(3px); }
+    ons-dialog .dialog { box-shadow:0 18px 60px #0003!important; }
     .modal-card h2 { font:500 25px 'Playfair Display',serif;margin:6px 0 10px; }
     .modal-card p { font-size:12px;line-height:1.6;color:var(--muted); }
     .modal-card .field { margin-top:12px; }
@@ -132,6 +149,7 @@
     .splash-sub { color:var(--gold);font-size:9px;letter-spacing:3px;margin-top:8px; }
     .splash-line { width:42px;height:2px;background:var(--gold);margin-top:25px;animation:pulse 1s infinite alternate; }
     @keyframes pulse { to { width:80px;opacity:.4; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important; } }
     ons-dialog .dialog { border-radius:18px!important;background:var(--cream)!important; }
     ons-dialog .dialog-container { padding:20px!important; }
     .dialog-mask { background:rgba(12,20,15,.55)!important; }
@@ -266,7 +284,14 @@
     let currentMonth = new Date(); currentMonth.setDate(1);
     let selectedDate = new Date();
 
-    function goTab(index) { document.getElementById('tabs').setActiveTab(index); }
+    function goTab(index) {
+      const tabs=document.getElementById('tabs');
+      if(tabs) tabs.setActiveTab(index);
+      requestAnimationFrame(()=> {
+        const active=document.querySelector('ons-tabbar ons-page:not([style*="display: none"]) .page__content');
+        if(active) active.scrollTo({top:0,behavior:'smooth'});
+      });
+    }
     function toast(message) { ons.notification.toast(message,{timeout:2200}); }
     function eventCard(e,dateLabel='WEEKLY') {
       const dayNames={2:'TUE',3:'WED',4:'THU',5:'FRI',6:'SAT'};
@@ -323,7 +348,7 @@
     function renderRsvps() {
       const node=document.getElementById('myRsvps');if(!node)return;
       const list=JSON.parse(localStorage.getItem('commune-rsvps')||'[]');
-      node.innerHTML=list.length?list.map(x=>`<div class="list-item"><div><h3>${x.title}</h3><p>${x.when} · ${x.guests} guest(s)<br>${x.name}</p></div><span class="price">Saved</span></div>`).join(''):'<p>You haven\\'t saved an RSVP yet.</p>';
+      node.innerHTML=list.length?list.map(x=>`<div class="list-item"><div><h3>${x.title}</h3><p>${x.when} · ${x.guests} guest(s)<br>${x.name}</p></div><span class="price">Saved</span></div>`).join(''):"<p>You haven't saved an RSVP yet.</p>";
     }
     function menuCategory(category,button) {
       document.querySelectorAll('#menuFilters .pill').forEach(x=>x.classList.remove('active'));button.classList.add('active');
@@ -333,14 +358,23 @@
     }
     function openPrivate() {
       goTab(4);
-      setTimeout(()=>openDialog(`<div class="modal-card"><div class="eyebrow">Make it a Commune occasion</div><h2>Private events</h2><p>Tell us a little about the gathering you're planning.</p><form id="privateForm"><div class="field"><label>Your name</label><input name="name" required placeholder="Name"></div><div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@example.com"></div><div class="field"><label>Event type</label><select name="type"><option>Birthday</option><option>Baby shower</option><option>Bridal shower</option><option>Private dinner</option><option>Other gathering</option></select></div><div class="field"><label>Preferred date</label><input name="date" type="date"></div><div class="field"><label>Guest count</label><input name="guests" type="number" min="1" placeholder="Approximate number"></div><div class="field"><label>Tell us more</label><textarea name="message" placeholder="A few details about your event..."></textarea></div><ons-button class="gold-button full" onclick="submitPrivate(event)">Send enquiry ↗</ons-button></form></div>`),100);
+      setTimeout(()=>openDialog(`<div class="modal-card"><div class="eyebrow">Make it a Commune occasion</div><h2>Private events</h2><p>Tell us a little about the gathering you're planning.</p><form id="privateForm"><div class="field"><label>Your name</label><input name="name" required placeholder="Name"></div><div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@example.com"></div><div class="field"><label>Event type</label><select name="type"><option>Birthday</option><option>Baby shower</option><option>Bridal shower</option><option>Private dinner</option><option>Other gathering</option></select></div><div class="field"><label>Preferred date</label><input name="date" type="date"></div><div class="field"><label>Guest count</label><input name="guests" type="number" min="1" placeholder="Approximate number"></div><div class="field"><label>Tell us more</label><textarea name="message" placeholder="A few details about your event..."></textarea></div><ons-button class="gold-button full" onclick="submitPrivate(event)">Continue to email ↗</ons-button></form></div>`),100);
     }
     function submitPrivate(event) {
-      event.preventDefault();
-      const form=document.getElementById('privateForm');if(!form.reportValidity())return;
-      const data=new FormData(form),body=[...data.entries()].map(([k,v])=>`${k}: ${v}`).join('\n');
-      location.href=`mailto:info@commune-nyc.com?subject=Private%20event%20enquiry&body=${encodeURIComponent(body)}`;
-      closeDialog();toast('Opening your email app…');
+      if(event) event.preventDefault();
+      const form=document.getElementById('privateForm');
+      if(!form || !form.reportValidity()) return;
+      const data=new FormData(form);
+      const fields=[...data.entries()].filter(([k,v])=>String(v).trim()).map(([k,v])=>`${k}: ${v}`);
+      const subject='Private event enquiry — Commune';
+      const body=fields.join('\\n');
+      const mailto=`mailto:info@commune-nyc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      // The enquiry is handed to the user's email app; this front-end cannot verify delivery.
+      window.location.href=mailto;
+      const content=document.getElementById('dialogContent');
+      content.innerHTML=`<div class="modal-card"><div class="success-mark">✓</div><div class="eyebrow">Enquiry prepared</div><h2>Thanks for thinking of Commune.</h2><p>Your email app should open with your event details ready to send. Once you've sent it, the form will close automatically.</p><p class="subtext">If your email app didn't open, write to <strong>info@commune-nyc.com</strong>.</p></div>`;
+      setTimeout(()=>{ closeDialog(); form.reset(); },3200);
     }
     function openNotifications(){goTab(4);toast('Manage your Commune alerts here.');}
     async function enablePush() {
@@ -367,9 +401,20 @@
       if(page.id==='menuPage')menuCategory('All',document.querySelector('#menuFilters .pill'));
       if(page.id==='youPage')renderRsvps();
     });
-    document.addEventListener('DOMContentLoaded',()=>{
-      setTimeout(()=>document.getElementById('splash').classList.add('hide'),900);
-    });
+    function hideSplash() {
+      const splash=document.getElementById('splash');
+      if(splash && !splash.classList.contains('hide')) {
+        splash.classList.add('hide');
+        document.body.classList.add('app-ready');
+      }
+    }
+    if(document.readyState==='loading') {
+      document.addEventListener('DOMContentLoaded',()=>setTimeout(hideSplash,500),{once:true});
+    } else {
+      setTimeout(hideSplash,500);
+    }
+    // Safety fallback: never leave the app behind the splash screen.
+    setTimeout(hideSplash,4000);
   </script>
 
   <ons-dialog id="appDialog" cancelable>
@@ -377,4 +422,3 @@
   </ons-dialog>
 </body>
 </html>
-
