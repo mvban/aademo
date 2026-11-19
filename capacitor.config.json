@@ -2,6 +2,10 @@
   "appId": "demo.app.android",
   "appName": "android-app-demo",
   "webDir": "dist",
+  "server": {
+    "url": "https://capacitor-app-2kb.pages.dev/",
+    "cleartext": false
+  },
   "plugins": {
     "SplashScreen": {
       "launchAutoHide": true
