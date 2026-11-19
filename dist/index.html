@@ -1,83 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#17251e"><title>Commune — Café, Wine & Community</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/framework7@8/framework7-bundle.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-<script type="module" src="/js/capacitor-welcome.js"></script>
-<style>
-:root{--f7-theme-color:#c7a77a;--ink:#18251e;--cream:#f5f1e8;--paper:#fffdf8;--muted:#827f75;--line:#e9e2d6;--gold:#c7a77a}*{box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink)}.view,.page{background:var(--cream)}.page-content{padding-bottom:105px}.app-shell{max-width:520px;margin:auto;min-height:100dvh;background:var(--cream);position:relative}.splash{position:fixed;inset:0;background:#17251e;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#f5f1e8;transition:opacity .65s,visibility .65s}.splash.hide{opacity:0;visibility:hidden}.splash-mark{font-family:'Playfair Display';font-size:48px;letter-spacing:5px}.splash-sub{font-size:10px;letter-spacing:4px;margin-top:9px;color:#c7a77a}.splash-line{width:46px;height:1px;background:#c7a77a;margin-top:32px;animation:pulse 1.1s infinite alternate}@keyframes pulse{to{width:90px;opacity:.4}}.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 22px 12px}.wordmark{font-family:'Playfair Display';font-size:25px;letter-spacing:2px}.eyebrow{font-size:9px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase}.circle-btn{border:1px solid var(--line);width:40px;height:40px;border-radius:50%;background:var(--paper);font-size:17px;color:var(--ink)}.hero{margin:5px 16px 20px;height:390px;border-radius:5px;overflow:hidden;position:relative;background:linear-gradient(180deg,transparent 35%,rgba(12,23,17,.8)),url('https://images.squarespace-cdn.com/content/v1/64396827989a024482511c34/d057234f-2847-46f2-87f8-41560e6a06fe/IMG_3473.JPG?format=1500w') center/cover}.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(15,25,19,.78))}.hero-copy{position:absolute;z-index:1;bottom:25px;left:23px;right:23px;color:#fff}.hero h1{font:500 39px/1.05 'Playfair Display';margin:9px 0 10px}.hero p{font-size:13px;line-height:1.6;max-width:290px;color:#eee8dd}.gold-btn{background:var(--gold);color:#17251e;border:0;border-radius:3px;padding:14px 18px;font-size:11px;letter-spacing:1.5px;font-weight:700;text-transform:uppercase;display:inline-flex;align-items:center;justify-content:center;gap:8px}.section{padding:7px 21px 23px}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:15px}.section-title{font:500 27px 'Playfair Display';margin:4px 0 0}.link{font-size:11px;color:#796345;text-decoration:none;border-bottom:1px solid #c7a77a;padding-bottom:3px}.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.quick{background:var(--paper);padding:17px 10px;border:1px solid var(--line);min-height:104px}.quick .ico{font-size:21px}.quick b{display:block;font:500 15px 'Playfair Display';margin-top:11px}.quick small{font-size:9px;color:var(--muted)}.event-card{background:var(--paper);border:1px solid var(--line);display:flex;margin-bottom:10px;min-height:112px}.event-date{width:76px;background:#203127;color:#f7f1e6;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}.event-date b{font:500 26px 'Playfair Display'}.event-date span{font-size:9px;letter-spacing:2px}.event-info{padding:14px 13px;flex:1}.event-info h3{font:500 18px 'Playfair Display';margin:5px 0}.event-info p{font-size:10px;color:var(--muted);margin:0}.event-tag{font-size:8px;letter-spacing:1.5px;color:#92754f;text-transform:uppercase}.event-arrow{align-self:center;padding:10px;color:#987d59}.feature{background:#1b2b22;color:#f5f1e8;margin:5px 16px 24px;padding:23px;border-radius:4px}.feature h2{font:500 26px 'Playfair Display';margin:8px 0}.feature p{font-size:12px;line-height:1.65;color:#d5d0c6}.feature .gold-btn{margin-top:5px}.tabbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,520px);height:calc(70px + env(safe-area-inset-bottom));padding:8px 12px env(safe-area-inset-bottom);background:rgba(255,253,248,.97);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:100;backdrop-filter:blur(12px)}.tab{border:0;background:none;color:#918b7e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:9px}.tab .ti{font-size:20px}.tab.active{color:#24372b}.screen{display:none}.screen.active{display:block}.subhero{padding:22px 22px 17px}.subhero h1{font:500 35px 'Playfair Display';margin:5px 0}.subhero p{font-size:12px;line-height:1.6;color:var(--muted)}.filter-row{display:flex;gap:8px;overflow:auto;padding:0 21px 15px}.chip{border:1px solid #ddd3c4;background:transparent;border-radius:30px;padding:9px 14px;font-size:10px;white-space:nowrap;color:#625e54}.chip.active{background:#203127;color:white;border-color:#203127}.list{padding:0 20px}.menu-item{display:flex;justify-content:space-between;gap:15px;padding:15px 0;border-bottom:1px solid var(--line)}.menu-item h3{font:500 18px 'Playfair Display';margin:0 0 4px}.menu-item p{font-size:11px;color:var(--muted);line-height:1.5;margin:0}.price{font-size:12px;white-space:nowrap;color:#806849}.notice{margin:10px 20px 18px;background:#eee7da;padding:12px 14px;font-size:10px;line-height:1.55;color:#665f53}.calendar-head{display:flex;justify-content:space-between;align-items:center;padding:0 21px 12px}.calendar-head strong{font:500 19px 'Playfair Display'}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;padding:0 20px 18px}.day{border:1px solid var(--line);background:var(--paper);aspect-ratio:1;border-radius:3px;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:11px;color:#5f5b51}.day span{font-size:6px;color:#b18b5d;margin-top:3px}.day.today{background:#203127;color:#fff}.day.selected{outline:2px solid var(--gold)}.form{padding:0 20px 25px}.field{margin:12px 0}.field label{display:block;font-size:10px;letter-spacing:1px;color:#756f63;margin-bottom:6px;text-transform:uppercase}.field input,.field select,.field textarea{width:100%;border:1px solid #ddd4c7;background:var(--paper);padding:13px;font:13px 'DM Sans';border-radius:3px;color:var(--ink)}.field textarea{min-height:90px;resize:vertical}.full{width:100%}.profile-card{margin:5px 20px 15px;background:var(--paper);padding:18px;border:1px solid var(--line)}.profile-card h3{font:500 20px 'Playfair Display';margin:6px 0}.profile-card p{font-size:11px;line-height:1.6;color:var(--muted)}.bottom-space{height:25px}.toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%);background:#203127;color:white;padding:12px 17px;font-size:11px;z-index:300;opacity:0;transition:.25s;pointer-events:none;white-space:nowrap}.toast.show{opacity:1}.modal-overlay{display:none;position:fixed;inset:0;background:#1119;z-index:500;align-items:flex-end}.modal-overlay.show{display:flex}.modal{background:var(--cream);border-radius:14px 14px 0 0;width:100%;max-width:520px;margin:auto;padding:23px 22px calc(28px + env(safe-area-inset-bottom));max-height:85vh;overflow:auto}.modal h2{font:500 27px 'Playfair Display';margin:5px 0}.modal p{font-size:12px;line-height:1.6;color:var(--muted)}.close{float:right;border:0;background:none;font-size:22px}.badge{display:inline-block;background:#e9dfcf;padding:6px 9px;font-size:9px;letter-spacing:1px;color:#6f5838;text-transform:uppercase}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#17251e">
+  <title>Commune</title>
 
-/* Scroll fix: Framework7 root defaults can lock the WebView to a 100% viewport.
-   Commune uses document scrolling with a fixed bottom navigation bar. */
-html, body {
-  width: 100%; height: auto !important; min-height: 100%;
-  overflow-x: hidden !important; overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch; overscroll-behavior-y: contain;
-  touch-action: pan-y;
-}
-body { margin: 0; position: relative; }
-.app-shell, .framework7-root {
-  height: auto !important; min-height: 100dvh;
-  overflow: visible !important; overscroll-behavior-y: auto;
-}
-main { display: block; min-height: 1px; padding-bottom: calc(86px + env(safe-area-inset-bottom)); }
-.screen { min-height: 1px; overflow: visible; }
-.tabbar { position: fixed; bottom: 0; left: 50%; z-index: 100;
-  padding-bottom: max(8px, env(safe-area-inset-bottom)); }
-.modal-overlay { overflow-y: auto; -webkit-overflow-scrolling: touch; }
-.modal { overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+  <!-- Onsen UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/onsenui/css/onsenui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/onsenui/css/onsen-css-components.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/onsenui/js/onsenui.min.js"></script>
 
-</style></head><body>
-<div class="splash" id="splash"><div class="splash-mark">COMMUNE</div><div class="splash-sub">CAFÉ · WINE · COMMUNITY</div><div class="splash-line"></div></div>
-<div class="app-shell"><div class="topbar"><div><div class="wordmark">COMMUNE</div><div class="eyebrow">Brooklyn · New York</div></div><button class="circle-btn" onclick="openNotifications()" aria-label="Notifications">♧</button></div>
-<main>
-<section class="screen active" id="home"><div class="hero"><div class="hero-copy"><div class="eyebrow" style="color:#e2c69b">A PLACE TO GATHER</div><h1>Stay for a while.</h1><p>Coffee in the morning. Wine in the evening. Good people, good music and something happening.</p><button class="gold-btn" onclick="showScreen('events')">Discover what's on <span>↗</span></button></div></div>
-<div class="section"><div class="section-head"><div><div class="eyebrow">Make yourself at home</div><h2 class="section-title">Explore Commune</h2></div></div><div class="quick-grid"><button class="quick" onclick="showScreen('menu')"><span class="ico">☕</span><b>Food & drink</b><small>Explore the menu</small></button><button class="quick" onclick="showScreen('events')"><span class="ico">✳</span><b>What's on</b><small>Events & gatherings</small></button><button class="quick" onclick="showScreen('residency')"><span class="ico">♨</span><b>Residencies</b><small>Meet the makers</small></button></div></div>
-<div class="section"><div class="section-head"><div><div class="eyebrow">Good things are coming up</div><h2 class="section-title">On the calendar</h2></div><a class="link" onclick="showScreen('events')">Full calendar ↗</a></div><div id="homeEvents"></div></div>
-<div class="feature"><div class="eyebrow" style="color:#c7a77a">Bring everyone together</div><h2>Your next gathering<br>starts here.</h2><p>Birthdays, showers, intimate dinners and celebrations. Make Commune the setting for your next occasion.</p><button class="gold-btn" onclick="showScreen('private')">Plan a private event ↗</button></div>
-<div class="section"><div class="eyebrow">Find us in Brooklyn</div><h2 class="section-title">Come through.</h2><p style="font-size:12px;line-height:1.7;color:var(--muted)">415 Classon Ave<br>Brooklyn, NY 11238<br><br>Sun–Thu · 7AM–11PM<br>Fri–Sat · 8AM–12AM<br><small>Coffee & espresso until 8PM · Wine & cocktails all day</small></p><button class="gold-btn" onclick="directions()">Get directions ↗</button></div></section>
-<section class="screen" id="events"><div class="subhero"><div class="eyebrow">Gather, discover, repeat</div><h1>What's happening</h1><p>Find your people at Commune. Browse the calendar and save your spot.</p></div><div class="calendar-head"><button class="circle-btn" onclick="changeMonth(-1)">‹</button><strong id="monthLabel"></strong><button class="circle-btn" onclick="changeMonth(1)">›</button></div><div class="calendar-grid" id="calendar"></div><div class="section"><div class="section-head"><div><div class="eyebrow">Selected date</div><h2 class="section-title" id="selectedDateLabel">Upcoming events</h2></div></div><div id="eventList"></div></div></section>
-<section class="screen" id="menu"><div class="subhero"><div class="eyebrow">At the table & at the bar</div><h1>Food & drink</h1><p>A little something for every hour. Explore Commune's café and wine bar.</p></div><div class="filter-row" id="menuFilters"><button class="chip active" onclick="menuCategory('All',this)">All</button><button class="chip" onclick="menuCategory('Coffee',this)">Coffee</button><button class="chip" onclick="menuCategory('Wine',this)">Wine</button><button class="chip" onclick="menuCategory('Cocktails',this)">Cocktails</button><button class="chip" onclick="menuCategory('Food',this)">Food</button></div><div class="notice">Menu preview: the live website confirms coffee and espresso until 8PM, with wine and cocktails available throughout the day. Exact dish names, ingredients and prices need to be loaded from the restaurant's approved menu before launch.</div><div class="list" id="menuList"></div></section>
-<section class="screen" id="residency"><div class="subhero"><div class="eyebrow">People behind the experience</div><h1>Chef & creative residencies</h1><p>A rotating table of chefs, makers and collaborators. Discover who's taking over the kitchen and what's on the menu.</p></div><div class="profile-card"><span class="badge">Residency programme</span><h3>Meet the next guest chef.</h3><p>Chef names, dates, menus and booking links are intentionally left as editable programme content until Commune confirms its residency lineup.</p><button class="gold-btn" onclick="showScreen('events')">Explore upcoming events ↗</button></div><div class="profile-card"><div class="eyebrow">A seat at the table</div><h3>Pairing dinners</h3><p>Seasonal menus, thoughtful pours and an evening made to be shared. Join the list to hear when the next dinner is announced.</p><button class="gold-btn" onclick="openRSVP('Pairing dinner updates','Join the pairing dinner notification list')">Get pairing dinner alerts</button></div></section>
-<section class="screen" id="private"><div class="subhero"><div class="eyebrow">Make it a Commune occasion</div><h1>Private events</h1><p>Baby showers, bridal showers, birthdays, private dining and gatherings. Tell us what you're planning.</p></div><div class="profile-card"><h3>A space for your people.</h3><p>Commune offers a distinctive setting with a considered atmosphere. The team can customise details for intimate gatherings and full celebrations.</p></div><form class="form" id="privateForm"><div class="field"><label>Your name</label><input name="name" required placeholder="Name"></div><div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@example.com"></div><div class="field"><label>Event type</label><select name="type"><option>Birthday</option><option>Baby shower</option><option>Bridal shower</option><option>Private dinner</option><option>Other gathering</option></select></div><div class="field"><label>Preferred date</label><input name="date" type="date"></div><div class="field"><label>Guest count</label><input name="guests" type="number" min="1" placeholder="Approximate number"></div><div class="field"><label>Tell us more</label><textarea name="message" placeholder="A few details about your event..."></textarea></div><button class="gold-btn full" type="submit">Send enquiry ↗</button><p style="font-size:9px;color:var(--muted)">Demo: opens your email app with the enquiry. Connect a booking backend to receive submissions automatically.</p></form></section>
-<section class="screen" id="profile"><div class="subhero"><div class="eyebrow">Your Commune</div><h1>Your visits, your way.</h1><p>Keep your RSVPs close and stay in the loop when new gatherings are announced.</p></div><div class="profile-card"><h3>Saved RSVPs</h3><div id="myRsvps"><p>You haven't saved an RSVP yet.</p></div></div><div class="profile-card"><h3>Stay in the know</h3><p>Get notified about pairing dinners, guest chefs and special events.</p><button class="gold-btn full" onclick="enablePush()">Enable push alerts ↗</button><p id="pushStatus" style="font-size:10px"></p></div><div class="profile-card"><h3>Visit Commune</h3><p>415 Classon Ave<br>Brooklyn, NY 11238<br>info@commune-nyc.com</p><button class="gold-btn" onclick="directions()">Directions ↗</button></div></section>
-</main>
-<nav class="tabbar"><button class="tab active" data-screen="home" onclick="showScreen('home')"><span class="ti">⌂</span>Home</button><button class="tab" data-screen="events" onclick="showScreen('events')"><span class="ti">▦</span>Events</button><button class="tab" data-screen="menu" onclick="showScreen('menu')"><span class="ti">♧</span>Menu</button><button class="tab" data-screen="residency" onclick="showScreen('residency')"><span class="ti">✳</span>People</button><button class="tab" data-screen="profile" onclick="showScreen('profile')"><span class="ti">○</span>You</button></nav>
-</div><div class="toast" id="toast"></div>
-<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()"><div class="modal"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
-<script src="https://cdn.jsdelivr.net/npm/framework7@8/framework7-bundle.min.js"></script>
-<script>
-// Initialise Framework7 for the Capacitor WebView shell.
-const f7App = new Framework7({ root: '.app-shell', name: 'Commune', id: 'com.commune.nyc', theme: 'ios' });
-// Commune demo data. Replace placeholders with owner-approved event, chef and menu content.
-const events=[
- {id:'trivia',day:2,title:'Trivia Night',time:'7PM–9PM',type:'Weekly gathering',desc:'Bring your team, settle in and put your knowledge to the test. A regular Tuesday night at Commune.',date:null},
- {id:'karaoke',day:3,title:'Open Mic Karaoke',time:'7PM–Closing',type:'Music & community',desc:'Take the mic, cheer on your neighbours and make a night of it.',date:null},
- {id:'comedy',day:4,title:'Comedy Open Mic',time:'6PM',type:'Live performance',desc:'A Thursday evening of new voices and live comedy.',date:null},
- {id:'comedyshow',day:4,title:'Comedy Show',time:'7PM–9PM',type:'Live performance',desc:'Stay for the show and spend the evening with the Commune community.',date:null},
- {id:'vinyl',day:5,title:'Vinyl DJ Series',time:'8PM',type:'Music & nightlife',desc:'A night of records, good drinks and a room full of good energy.',date:null},
- {id:'dj',day:6,title:'DJ / Live Music',time:'8PM',type:'Music & nightlife',desc:'Saturday nights at Commune with DJs and live music.',date:null}
-];
-const menuItems=[{cat:'Coffee',name:'Coffee & espresso',desc:'Coffee and espresso service until 8PM.',price:'Ask in venue'},{cat:'Wine',name:'Natural & organic wines',desc:'A rotating wine programme shaped by country of origin and season.',price:'Ask in venue'},{cat:'Wine',name:'New York state beer',desc:'Local brews, including Brooklyn-based breweries.',price:'Ask in venue'},{cat:'Cocktails',name:'Cocktails',desc:'Available throughout the day.',price:'Ask in venue'},{cat:'Food',name:'Café & kitchen menu',desc:'Menu details to be confirmed with Commune.',price:'Ask in venue'}];
-let currentMonth=new Date();currentMonth.setDate(1);let selectedDate=new Date();let selectedDay=selectedDate.getDate();
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
-function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.screen===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='events')renderCalendar();if(id==='profile')renderRsvps()}
-function renderEventCard(e,dateLabel){return `<div class="event-card" onclick="openEvent('${e.id}','${dateLabel||''}')"><div class="event-date"><span>${dateLabel||'WEEKLY'}</span><b>${e.day===2?'TUE':e.day===3?'WED':e.day===4?'THU':e.day===5?'FRI':'SAT'}</b></div><div class="event-info"><div class="event-tag">${e.type}</div><h3>${e.title}</h3><p>${e.time}</p></div><div class="event-arrow">↗</div></div>`}
-function renderHomeEvents(){document.getElementById('homeEvents').innerHTML=events.slice(0,3).map(e=>renderEventCard(e,'WEEKLY')).join('')}
-function renderCalendar(){const y=currentMonth.getFullYear(),m=currentMonth.getMonth();document.getElementById('monthLabel').textContent=currentMonth.toLocaleDateString('en-US',{month:'long',year:'numeric'});const first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();let html=['S','M','T','W','T','F','S'].map(x=>`<div class="eyebrow" style="text-align:center;padding:7px 0">${x}</div>`).join('');for(let i=0;i<first;i++)html+='<div></div>';for(let d=1;d<=days;d++){const dow=new Date(y,m,d).getDay();const has=events.some(e=>e.day===dow);html+=`<button class="day ${d===selectedDay&&m===selectedDate.getMonth()&&y===selectedDate.getFullYear()?'selected':''}" onclick="selectDay(${d})">${d}${has?'<span>●</span>':''}</button>`}document.getElementById('calendar').innerHTML=html;renderSelectedEvents()}
-function changeMonth(n){currentMonth.setMonth(currentMonth.getMonth()+n);renderCalendar()}
-function selectDay(d){selectedDay=d;selectedDate=new Date(currentMonth.getFullYear(),currentMonth.getMonth(),d);renderCalendar()}
-function renderSelectedEvents(){const date=new Date(currentMonth.getFullYear(),currentMonth.getMonth(),selectedDay);const dow=date.getDay();document.getElementById('selectedDateLabel').textContent=date.toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});const todays=events.filter(e=>e.day===dow);document.getElementById('eventList').innerHTML=todays.length?todays.map(e=>renderEventCard(e,date.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toUpperCase())).join(''):'<div class="notice">No recurring programme is listed for this day. Check back for special dinners and pop-up events.</div>'}
-function openEvent(id,date){const e=events.find(x=>x.id===id);document.getElementById('modalContent').innerHTML=`<div class="eyebrow">${e.type}</div><h2>${e.title}</h2><span class="badge">${date||'Weekly programme'} · ${e.time}</span><p>${e.desc}</p><p>Join us at 415 Classon Ave, Brooklyn, NY 11238.</p><button class="gold-btn full" onclick="openRSVP('${e.title}','${date||'Weekly'} · ${e.time}')">RSVP / Save your spot ↗</button>`;document.getElementById('modal').classList.add('show')}
-function openRSVP(title,when){document.getElementById('modalContent').innerHTML=`<div class="eyebrow">A place at Commune</div><h2>Save your spot.</h2><p>${title}<br>${when}</p><div class="field"><label>Your name</label><input id="rsvpName" placeholder="Name" required></div><div class="field"><label>Email address</label><input id="rsvpEmail" type="email" placeholder="you@example.com" required></div><div class="field"><label>Number of guests</label><select id="rsvpGuests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div><button class="gold-btn full" onclick="saveRsvp('${title}','${when}')">Confirm demo RSVP ↗</button><p style="font-size:9px">Demo RSVP is saved on this device only. Connect a server to manage real guest lists and capacity.</p>`;document.getElementById('modal').classList.add('show')}
-function saveRsvp(title,when){const name=document.getElementById('rsvpName').value.trim(),email=document.getElementById('rsvpEmail').value.trim();if(!name||!email.includes('@')){toast('Please add your name and a valid email.');return}const r=JSON.parse(localStorage.getItem('commune-rsvps')||'[]');r.push({title,when,name,email,guests:document.getElementById('rsvpGuests').value});localStorage.setItem('commune-rsvps',JSON.stringify(r));closeModal();toast('RSVP saved on this device.');renderRsvps()}
-function renderRsvps(){const r=JSON.parse(localStorage.getItem('commune-rsvps')||'[]');document.getElementById('myRsvps').innerHTML=r.length?r.map(x=>`<div class="menu-item"><div><h3>${x.title}</h3><p>${x.when} · ${x.guests} guest(s)<br>${x.name}</p></div><span class="price">Saved</span></div>`).join(''):'<p>You haven\'t saved an RSVP yet.</p>'}
-function menuCategory(cat,btn){document.querySelectorAll('#menuFilters .chip').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const arr=cat==='All'?menuItems:menuItems.filter(x=>x.cat===cat);document.getElementById('menuList').innerHTML=arr.map(x=>`<div class="menu-item"><div><h3>${x.name}</h3><p>${x.desc}</p></div><span class="price">${x.price}</span></div>`).join('')}
-function closeModal(){document.getElementById('modal').classList.remove('show')}
-function openNotifications(){showScreen('profile');toast('Manage your Commune alerts here.')}
-async function enablePush(){const status=document.getElementById('pushStatus');try{if(window.Capacitor&&window.Capacitor.isNativePlatform&&window.Capacitor.isNativePlatform()&&window.Capacitor.Plugins&&window.Capacitor.Plugins.PushNotifications){const p=window.Capacitor.Plugins.PushNotifications;let perm=await p.requestPermissions();if(perm.receive==='granted'){await p.register();status.textContent='Push permission granted. Device registration requested.';toast('Push alerts enabled on this device.')}else{status.textContent='Push permission was not granted.'}}else if('Notification'in window){const result=await Notification.requestPermission();status.textContent=result==='granted'?'Browser notifications enabled for this demo.':'Notification permission not granted.';if(result==='granted')new Notification('Commune',{body:'You are set to hear about what’s happening.'})}else{status.textContent='Push notifications require the Capacitor Push Notifications plugin on a native build.'}}catch(e){status.textContent='Could not register notifications. Check native plugin setup.'}}
-function directions(){const url='https://maps.google.com/?q=415+Classon+Ave+Brooklyn+NY+11238';if(window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.Browser)window.Capacitor.Plugins.Browser.open({url});else window.open(url,'_blank')}
-document.getElementById('privateForm').addEventListener('submit',e=>{e.preventDefault();const d=new FormData(e.target);const body=[...d.entries()].map(([k,v])=>`${k}: ${v}`).join('\n');location.href=`mailto:info@commune-nyc.com?subject=Private%20event%20enquiry&body=${encodeURIComponent(body)}`;toast('Opening your email app…')});
-renderHomeEvents();menuCategory('All',document.querySelector('#menuFilters .chip'));renderCalendar();setTimeout(()=>document.getElementById('splash').classList.add('hide'),1250);
-</script></body></html>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="/js/capacitor-welcome.js"></script>
+
+  <style>
+    :root {
+      --green:#17251e; --green2:#24372b; --gold:#c7a77a;
+      --cream:#f5f1e8; --paper:#fffdf8; --ink:#18251e;
+      --muted:#827f75; --line:#e9e2d6;
+      --ons-primary:var(--green2);
+    }
+    * { box-sizing:border-box; }
+    html, body { margin:0; width:100%; min-height:100%; background:var(--cream); color:var(--ink); font-family:'DM Sans',sans-serif; }
+    body { overflow:hidden; }
+    ons-page, .page__content { background:var(--cream)!important; color:var(--ink); }
+    .page__content { padding-bottom:calc(18px + env(safe-area-inset-bottom)); }
+    .app-toolbar { background:var(--green)!important; color:var(--cream)!important; border:0!important; box-shadow:0 2px 10px #00000012; }
+    .toolbar__title { color:var(--cream)!important; font:600 20px 'Playfair Display',serif!important; letter-spacing:2px; }
+    .toolbar-button { color:var(--cream)!important; }
+    .toolbar__right .toolbar-button { font-size:20px; }
+    .tabbar { background:var(--paper)!important; border-top:1px solid var(--line)!important; box-shadow:0 -4px 16px #17251e0a; }
+    .tabbar__item { color:#8b877d!important; }
+    .tabbar__item.active { color:var(--green2)!important; }
+    .tabbar__icon { font-size:21px!important; }
+    .tabbar__label { font-size:10px!important; font-weight:600; }
+    .screen-pad { padding:16px 16px 24px; }
+    .eyebrow { color:var(--muted); text-transform:uppercase; letter-spacing:2px; font-size:9px; font-weight:700; }
+    .heading { font:500 27px/1.12 'Playfair Display',serif; margin:5px 0 8px; color:var(--ink); }
+    .subtext { color:var(--muted); font-size:12px; line-height:1.6; margin:0; }
+    .home-welcome { padding:20px 18px 16px; }
+    .welcome-title { font:500 31px/1.08 'Playfair Display',serif; margin:8px 0; }
+    .welcome-copy { color:#e7e0d4; font-size:12px; line-height:1.55; max-width:290px; }
+    .welcome-card {
+      margin:10px 14px 18px; min-height:215px; border-radius:17px; overflow:hidden;
+      position:relative; color:white; display:flex; align-items:flex-end;
+      background:linear-gradient(180deg,#17251e12 15%,#17251edb 100%),url('https://images.squarespace-cdn.com/content/v1/64396827989a024482511c34/d057234f-2847-46f2-87f8-41560e6a06fe/IMG_3473.JPG?format=1500w') center/cover;
+      box-shadow:0 8px 22px #17251e1a;
+    }
+    .welcome-card .home-welcome { padding:18px; }
+    .gold-button {
+      background:var(--gold)!important; color:var(--green)!important; border:0!important;
+      border-radius:10px!important; font-size:11px!important; font-weight:700!important;
+      letter-spacing:.5px; text-transform:none; min-height:42px; padding:0 17px!important;
+    }
+    .outline-button { border:1px solid #c9b99f!important; color:var(--green)!important; border-radius:10px!important; background:transparent!important; }
+    .section-row { display:flex; align-items:center; justify-content:space-between; margin:18px 16px 10px; }
+    .section-row .heading { font-size:22px; margin:3px 0 0; }
+    .text-link { color:#806849; font-size:11px; font-weight:700; text-decoration:none; }
+    .quick-actions { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; padding:0 14px; }
+    .quick-action {
+      background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:14px 10px;
+      text-align:left; min-height:105px; box-shadow:0 3px 10px #17251e06;
+    }
+    .quick-icon { width:34px;height:34px;border-radius:11px;background:#eee7da;display:grid;place-items:center;font-size:18px;margin-bottom:10px; }
+    .quick-action strong { display:block;font:500 14px 'Playfair Display',serif; }
+    .quick-action small { display:block;color:var(--muted);font-size:9px;margin-top:4px; }
+    .app-card {
+      margin:0 14px 10px; background:var(--paper); border:1px solid var(--line);
+      border-radius:14px; overflow:hidden; box-shadow:0 3px 12px #17251e08;
+    }
+    .event-row { display:flex; align-items:center; gap:12px; padding:13px; }
+    .event-date {
+      width:49px;height:53px;flex:0 0 49px;border-radius:12px;background:var(--green2);
+      color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    }
+    .event-date b { font:600 19px 'Playfair Display',serif; }
+    .event-date span { font-size:8px;letter-spacing:1px; }
+    .event-copy { min-width:0;flex:1; }
+    .event-copy strong { display:block;font:500 16px 'Playfair Display',serif; }
+    .event-copy small { color:var(--muted);font-size:10px;display:block;margin-top:4px; }
+    .chevron { color:#a38b68;font-size:20px; }
+    .feature-card { margin:18px 14px; padding:19px; border-radius:16px; background:var(--green); color:var(--cream); }
+    .feature-card .heading { color:var(--cream);font-size:24px; }
+    .feature-card .subtext { color:#d5d0c6; }
+    .feature-card .gold-button { margin-top:13px; }
+    .page-intro { padding:21px 17px 14px; }
+    .page-intro .heading { font-size:30px; }
+    .pill-row { display:flex; gap:7px; padding:0 15px 14px; overflow-x:auto; }
+    .pill { white-space:nowrap;border:1px solid #ddd3c4;background:transparent;border-radius:30px;padding:8px 13px;font-size:10px;color:#625e54; }
+    .pill.active { background:var(--green2);color:white;border-color:var(--green2); }
+    .list-item { display:flex;justify-content:space-between;gap:12px;padding:14px 15px;border-bottom:1px solid var(--line);background:var(--paper); }
+    .list-item:first-child { border-radius:13px 13px 0 0; }
+    .list-item:last-child { border-bottom:0;border-radius:0 0 13px 13px; }
+    .list-wrap { margin:0 14px 14px;border:1px solid var(--line);border-radius:13px;overflow:hidden; }
+    .list-item h3 { margin:0 0 4px;font:500 16px 'Playfair Display',serif; }
+    .list-item p { margin:0;color:var(--muted);font-size:10px;line-height:1.5; }
+    .price { color:#806849;font-size:11px;white-space:nowrap;padding-top:2px; }
+    .info-strip { margin:0 14px 15px;padding:12px 13px;background:#eee7da;border-radius:11px;color:#665f53;font-size:10px;line-height:1.55; }
+    .calendar-shell { margin:0 14px 14px;padding:13px;background:var(--paper);border:1px solid var(--line);border-radius:14px; }
+    .calendar-head { display:flex;justify-content:space-between;align-items:center;margin-bottom:10px; }
+    .calendar-head strong { font:500 17px 'Playfair Display',serif; }
+    .calendar-grid { display:grid;grid-template-columns:repeat(7,1fr);gap:5px; }
+    .weekday { text-align:center;font-size:9px;color:var(--muted);padding:5px 0; }
+    .day { border:0;background:transparent;aspect-ratio:1;border-radius:10px;font-size:11px;color:var(--ink);position:relative; }
+    .day.has-event:after { content:'';position:absolute;bottom:5px;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:var(--gold); }
+    .day.today,.day.selected { background:var(--green2);color:white; }
+    .day.today:after,.day.selected:after { background:var(--gold); }
+    .form-card { margin:0 14px 16px;padding:15px;background:var(--paper);border:1px solid var(--line);border-radius:14px; }
+    .field { margin-bottom:13px; }
+    .field label { display:block;font-size:9px;font-weight:700;letter-spacing:1px;color:#756f63;margin-bottom:6px;text-transform:uppercase; }
+    .field input,.field select,.field textarea {
+      width:100%;border:1px solid #ddd4c7;background:#fffefa;padding:12px;
+      font:13px 'DM Sans',sans-serif;border-radius:10px;color:var(--ink);outline:none;
+    }
+    .field textarea { min-height:85px;resize:vertical; }
+    .full { width:100%; }
+    .profile-panel { margin:0 14px 12px;padding:16px;background:var(--paper);border:1px solid var(--line);border-radius:14px; }
+    .profile-panel h3 { font:500 18px 'Playfair Display',serif;margin:0 0 7px; }
+    .profile-panel p { color:var(--muted);font-size:11px;line-height:1.6;margin:0 0 12px; }
+    .small-badge { display:inline-block;background:#eee7da;color:#6f5838;border-radius:20px;padding:5px 9px;font-size:8px;letter-spacing:1px;text-transform:uppercase; }
+    .modal-card { padding:8px 4px 4px; }
+    .modal-card h2 { font:500 25px 'Playfair Display',serif;margin:6px 0 10px; }
+    .modal-card p { font-size:12px;line-height:1.6;color:var(--muted); }
+    .modal-card .field { margin-top:12px; }
+    .splash { position:fixed;inset:0;z-index:9999;background:var(--green);display:flex;align-items:center;justify-content:center;flex-direction:column;color:var(--cream);transition:opacity .4s,visibility .4s; }
+    .splash.hide { opacity:0;visibility:hidden; }
+    .splash-mark { font:500 40px 'Playfair Display',serif;letter-spacing:5px; }
+    .splash-sub { color:var(--gold);font-size:9px;letter-spacing:3px;margin-top:8px; }
+    .splash-line { width:42px;height:2px;background:var(--gold);margin-top:25px;animation:pulse 1s infinite alternate; }
+    @keyframes pulse { to { width:80px;opacity:.4; } }
+    ons-dialog .dialog { border-radius:18px!important;background:var(--cream)!important; }
+    ons-dialog .dialog-container { padding:20px!important; }
+    .dialog-mask { background:rgba(12,20,15,.55)!important; }
+    .bottom-note { height:15px; }
+    @media (min-width:600px) {
+      body { background:#e8e3d9; }
+      #app { max-width:430px;margin:0 auto;box-shadow:0 0 40px #17251e18; }
+      .tabbar { max-width:430px;left:50%;transform:translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="splash" id="splash"><div class="splash-mark">COMMUNE</div><div class="splash-sub">CAFÉ · WINE · COMMUNITY</div><div class="splash-line"></div></div>
+
+  <div id="app">
+    <ons-tabbar id="tabs" position="bottom" swipeable="false">
+      <ons-tab page="home.html" label="Home" icon="md-home" active></ons-tab>
+      <ons-tab page="events.html" label="Events" icon="md-calendar"></ons-tab>
+      <ons-tab page="menu.html" label="Menu" icon="md-coffee"></ons-tab>
+      <ons-tab page="people.html" label="People" icon="md-account-group"></ons-tab>
+      <ons-tab page="you.html" label="You" icon="md-account-circle"></ons-tab>
+    </ons-tabbar>
+  </div>
+
+  <template id="home.html">
+    <ons-page id="homePage">
+      <ons-toolbar class="app-toolbar">
+        <div class="center toolbar__title">COMMUNE</div>
+        <div class="right"><ons-toolbar-button onclick="openNotifications()">♧</ons-toolbar-button></div>
+      </ons-toolbar>
+      <div class="page__content">
+        <div class="welcome-card">
+          <div class="home-welcome">
+            <div class="eyebrow" style="color:#e2c69b">BROOKLYN · NEW YORK</div>
+            <div class="welcome-title">Stay for a while.</div>
+            <div class="welcome-copy">Coffee in the morning. Wine in the evening. Good people, good music and something happening.</div>
+            <ons-button class="gold-button" style="margin-top:14px" onclick="goTab(1)">Explore what's on&nbsp; ↗</ons-button>
+          </div>
+        </div>
+        <div class="section-row"><div><div class="eyebrow">Make yourself at home</div><div class="heading">Explore Commune</div></div></div>
+        <div class="quick-actions">
+          <button class="quick-action" onclick="goTab(2)"><span class="quick-icon">☕</span><strong>Food & drink</strong><small>Explore the menu</small></button>
+          <button class="quick-action" onclick="goTab(1)"><span class="quick-icon">✳</span><strong>What's on</strong><small>Events & gatherings</small></button>
+          <button class="quick-action" onclick="goTab(3)"><span class="quick-icon">♨</span><strong>People</strong><small>Meet the makers</small></button>
+        </div>
+        <div class="section-row"><div><div class="eyebrow">Good things are coming up</div><div class="heading">On the calendar</div></div><a class="text-link" onclick="goTab(1)">See all</a></div>
+        <div id="homeEvents"></div>
+        <div class="feature-card">
+          <div class="eyebrow" style="color:var(--gold)">BRING EVERYONE TOGETHER</div>
+          <div class="heading">Your next gathering starts here.</div>
+          <p class="subtext">Birthdays, showers, intimate dinners and celebrations. Make Commune the setting for your next occasion.</p>
+          <ons-button class="gold-button" onclick="openPrivate()">Plan a private event&nbsp; ↗</ons-button>
+        </div>
+        <div class="profile-panel">
+          <div class="eyebrow">FIND US IN BROOKLYN</div><h3>Come through.</h3>
+          <p>415 Classon Ave<br>Brooklyn, NY 11238<br><br>Sun–Thu · 7AM–11PM<br>Fri–Sat · 8AM–12AM<br>Coffee & espresso until 8PM · Wine & cocktails all day</p>
+          <ons-button class="gold-button" onclick="directions()">Get directions ↗</ons-button>
+        </div>
+      </div>
+    </ons-page>
+  </template>
+
+  <template id="events.html">
+    <ons-page id="eventsPage">
+      <ons-toolbar class="app-toolbar"><div class="center toolbar__title">WHAT'S ON</div></ons-toolbar>
+      <div class="page__content">
+        <div class="page-intro"><div class="eyebrow">Gather, discover, repeat</div><div class="heading">Find your people.</div><p class="subtext">Browse the calendar and save your spot at an upcoming Commune gathering.</p></div>
+        <div class="calendar-shell">
+          <div class="calendar-head"><ons-button modifier="quiet" onclick="changeMonth(-1)">‹</ons-button><strong id="monthLabel"></strong><ons-button modifier="quiet" onclick="changeMonth(1)">›</ons-button></div>
+          <div class="calendar-grid" id="calendar"></div>
+        </div>
+        <div class="section-row"><div><div class="eyebrow">Selected date</div><div class="heading" id="selectedDateLabel">Upcoming events</div></div></div>
+        <div id="eventList"></div>
+        <div class="bottom-note"></div>
+      </div>
+    </ons-page>
+  </template>
+
+  <template id="menu.html">
+    <ons-page id="menuPage">
+      <ons-toolbar class="app-toolbar"><div class="center toolbar__title">FOOD & DRINK</div></ons-toolbar>
+      <div class="page__content">
+        <div class="page-intro"><div class="eyebrow">At the table & at the bar</div><div class="heading">A little something for every hour.</div><p class="subtext">Explore Commune's café and wine bar.</p></div>
+        <div class="pill-row" id="menuFilters">
+          <button class="pill active" onclick="menuCategory('All',this)">All</button><button class="pill" onclick="menuCategory('Coffee',this)">Coffee</button><button class="pill" onclick="menuCategory('Wine',this)">Wine</button><button class="pill" onclick="menuCategory('Cocktails',this)">Cocktails</button><button class="pill" onclick="menuCategory('Food',this)">Food</button>
+        </div>
+        <div class="info-strip">Menu preview: coffee and espresso are served until 8PM, with wine and cocktails available throughout the day. Exact dishes and prices should be added from Commune's approved menu.</div>
+        <div id="menuList"></div>
+      </div>
+    </ons-page>
+  </template>
+
+  <template id="people.html">
+    <ons-page id="peoplePage">
+      <ons-toolbar class="app-toolbar"><div class="center toolbar__title">PEOPLE & STORIES</div></ons-toolbar>
+      <div class="page__content">
+        <div class="page-intro"><div class="eyebrow">People behind the experience</div><div class="heading">Meet the makers.</div><p class="subtext">A rotating table of chefs, makers and collaborators. Discover who's taking over the kitchen and what's coming up.</p></div>
+        <div class="profile-panel"><span class="small-badge">Residency programme</span><h3 style="margin-top:10px">Meet the next guest chef.</h3><p>Chef names, dates, menus and booking links can be added here once Commune confirms its residency lineup.</p><ons-button class="gold-button" onclick="goTab(1)">Explore upcoming events ↗</ons-button></div>
+        <div class="profile-panel"><div class="eyebrow">A seat at the table</div><h3>Pairing dinners</h3><p>Seasonal menus, thoughtful pours and an evening made to be shared. Join the list to hear when the next dinner is announced.</p><ons-button class="gold-button" onclick="openRSVP('Pairing dinner updates','Notification list')">Get pairing dinner alerts</ons-button></div>
+      </div>
+    </ons-page>
+  </template>
+
+  <template id="you.html">
+    <ons-page id="youPage">
+      <ons-toolbar class="app-toolbar"><div class="center toolbar__title">YOUR COMMUNE</div></ons-toolbar>
+      <div class="page__content">
+        <div class="page-intro"><div class="eyebrow">Your Commune</div><div class="heading">Your visits, your way.</div><p class="subtext">Keep your RSVPs close and stay in the loop when new gatherings are announced.</p></div>
+        <div class="profile-panel"><h3>Saved RSVPs</h3><div id="myRsvps"><p>You haven't saved an RSVP yet.</p></div></div>
+        <div class="profile-panel"><h3>Stay in the know</h3><p>Get notified about pairing dinners, guest chefs and special events.</p><ons-button class="gold-button full" onclick="enablePush()">Enable push alerts ↗</ons-button><p id="pushStatus" style="margin-top:10px"></p></div>
+        <div class="profile-panel"><h3>Visit Commune</h3><p>415 Classon Ave<br>Brooklyn, NY 11238<br>info@commune-nyc.com</p><ons-button class="gold-button" onclick="directions()">Directions ↗</ons-button></div>
+      </div>
+    </ons-page>
+  </template>
+
+  <script>
+    const events = [
+      {id:'trivia',day:2,title:'Trivia Night',time:'7PM–9PM',type:'Weekly gathering',desc:'Bring your team, settle in and put your knowledge to the test. A regular Tuesday night at Commune.'},
+      {id:'karaoke',day:3,title:'Open Mic Karaoke',time:'7PM–Closing',type:'Music & community',desc:'Take the mic, cheer on your neighbours and make a night of it.'},
+      {id:'comedy',day:4,title:'Comedy Open Mic',time:'6PM',type:'Live performance',desc:'A Thursday evening of new voices and live comedy.'},
+      {id:'comedyshow',day:4,title:'Comedy Show',time:'7PM–9PM',type:'Live performance',desc:'Stay for the show and spend the evening with the Commune community.'},
+      {id:'vinyl',day:5,title:'Vinyl DJ Series',time:'8PM',type:'Music & nightlife',desc:'A night of records, good drinks and a room full of good energy.'},
+      {id:'dj',day:6,title:'DJ / Live Music',time:'8PM',type:'Music & nightlife',desc:'Saturday nights at Commune with DJs and live music.'}
+    ];
+    const menuItems = [
+      {cat:'Coffee',name:'Coffee & espresso',desc:'Coffee and espresso service until 8PM.',price:'Ask in venue'},
+      {cat:'Wine',name:'Natural & organic wines',desc:'A rotating wine programme shaped by country of origin and season.',price:'Ask in venue'},
+      {cat:'Wine',name:'New York state beer',desc:'Local brews, including Brooklyn-based breweries.',price:'Ask in venue'},
+      {cat:'Cocktails',name:'Cocktails',desc:'Available throughout the day.',price:'Ask in venue'},
+      {cat:'Food',name:'Café & kitchen menu',desc:'Menu details to be confirmed with Commune.',price:'Ask in venue'}
+    ];
+    let currentMonth = new Date(); currentMonth.setDate(1);
+    let selectedDate = new Date();
+
+    function goTab(index) { document.getElementById('tabs').setActiveTab(index); }
+    function toast(message) { ons.notification.toast(message,{timeout:2200}); }
+    function eventCard(e,dateLabel='WEEKLY') {
+      const dayNames={2:'TUE',3:'WED',4:'THU',5:'FRI',6:'SAT'};
+      return `<div class="app-card" onclick="openEvent('${e.id}','${dateLabel}')"><div class="event-row"><div class="event-date"><span>${dateLabel}</span><b>${dayNames[e.day]}</b></div><div class="event-copy"><strong>${e.title}</strong><small>${e.type} · ${e.time}</small></div><span class="chevron">›</span></div></div>`;
+    }
+    function renderHomeEvents() {
+      const node=document.getElementById('homeEvents');
+      if(node) node.innerHTML=events.slice(0,3).map(e=>eventCard(e)).join('');
+    }
+    function renderCalendar() {
+      const grid=document.getElementById('calendar'); if(!grid) return;
+      const y=currentMonth.getFullYear(),m=currentMonth.getMonth();
+      document.getElementById('monthLabel').textContent=currentMonth.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+      const first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
+      let html=['S','M','T','W','T','F','S'].map(x=>`<div class="weekday">${x}</div>`).join('');
+      for(let i=0;i<first;i++) html+='<div></div>';
+      for(let d=1;d<=days;d++) {
+        const dow=new Date(y,m,d).getDay(),has=events.some(e=>e.day===dow);
+        const selected=d===selectedDate.getDate()&&m===selectedDate.getMonth()&&y===selectedDate.getFullYear();
+        html+=`<button class="day ${has?'has-event':''} ${selected?'selected':''}" onclick="selectDay(${d})">${d}</button>`;
+      }
+      grid.innerHTML=html; renderSelectedEvents();
+    }
+    function changeMonth(amount) { currentMonth.setMonth(currentMonth.getMonth()+amount); renderCalendar(); }
+    function selectDay(day) { selectedDate=new Date(currentMonth.getFullYear(),currentMonth.getMonth(),day); renderCalendar(); }
+    function renderSelectedEvents() {
+      const label=document.getElementById('selectedDateLabel'),list=document.getElementById('eventList'); if(!label||!list)return;
+      const dow=selectedDate.getDay();
+      label.textContent=selectedDate.toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});
+      const todays=events.filter(e=>e.day===dow);
+      list.innerHTML=todays.length?todays.map(e=>eventCard(e,selectedDate.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toUpperCase())).join(''):'<div class="info-strip">No recurring programme is listed for this day. Check back for special dinners and pop-up events.</div>';
+    }
+    function openDialog(content) {
+      const dialog=document.getElementById('appDialog');
+      document.getElementById('dialogContent').innerHTML=content;
+      if(dialog) dialog.show();
+      else ons.createElement('ons-dialog').then(d=>{d.innerHTML=`<div class="dialog-container">${content}</div>`;document.body.appendChild(d);d.show();});
+    }
+    function closeDialog(){const d=document.getElementById('appDialog');if(d)d.hide();}
+    function openEvent(id,date) {
+      const e=events.find(x=>x.id===id);
+      openDialog(`<div class="modal-card"><div class="eyebrow">${e.type}</div><h2>${e.title}</h2><span class="small-badge">${date||'Weekly programme'} · ${e.time}</span><p>${e.desc}</p><p>Join us at 415 Classon Ave, Brooklyn, NY 11238.</p><ons-button class="gold-button full" onclick="openRSVP('${e.title}','${date||'Weekly'} · ${e.time}')">RSVP / Save your spot ↗</ons-button><p style="text-align:center;margin-bottom:0"><a class="text-link" onclick="closeDialog()">Maybe later</a></p></div>`);
+    }
+    function openRSVP(title,when) {
+      openDialog(`<div class="modal-card"><div class="eyebrow">A place at Commune</div><h2>Save your spot.</h2><p>${title}<br>${when}</p><div class="field"><label>Your name</label><input id="rsvpName" placeholder="Name"></div><div class="field"><label>Email address</label><input id="rsvpEmail" type="email" placeholder="you@example.com"></div><div class="field"><label>Number of guests</label><select id="rsvpGuests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div><ons-button class="gold-button full" onclick="saveRsvp('${title}','${when}')">Confirm demo RSVP</ons-button><p style="font-size:9px">Demo RSVP is saved on this device only. Connect a server to manage real guest lists and capacity.</p></div>`);
+    }
+    function saveRsvp(title,when) {
+      const name=document.getElementById('rsvpName').value.trim(),email=document.getElementById('rsvpEmail').value.trim();
+      if(!name||!email.includes('@')){toast('Please add your name and a valid email.');return;}
+      const list=JSON.parse(localStorage.getItem('commune-rsvps')||'[]');
+      list.push({title,when,name,email,guests:document.getElementById('rsvpGuests').value});
+      localStorage.setItem('commune-rsvps',JSON.stringify(list));closeDialog();toast('RSVP saved on this device.');renderRsvps();
+    }
+    function renderRsvps() {
+      const node=document.getElementById('myRsvps');if(!node)return;
+      const list=JSON.parse(localStorage.getItem('commune-rsvps')||'[]');
+      node.innerHTML=list.length?list.map(x=>`<div class="list-item"><div><h3>${x.title}</h3><p>${x.when} · ${x.guests} guest(s)<br>${x.name}</p></div><span class="price">Saved</span></div>`).join(''):'<p>You haven\\'t saved an RSVP yet.</p>';
+    }
+    function menuCategory(category,button) {
+      document.querySelectorAll('#menuFilters .pill').forEach(x=>x.classList.remove('active'));button.classList.add('active');
+      const list=category==='All'?menuItems:menuItems.filter(x=>x.cat===category);
+      const node=document.getElementById('menuList');
+      node.innerHTML=`<div class="list-wrap">${list.map(x=>`<div class="list-item"><div><h3>${x.name}</h3><p>${x.desc}</p></div><span class="price">${x.price}</span></div>`).join('')}</div>`;
+    }
+    function openPrivate() {
+      goTab(4);
+      setTimeout(()=>openDialog(`<div class="modal-card"><div class="eyebrow">Make it a Commune occasion</div><h2>Private events</h2><p>Tell us a little about the gathering you're planning.</p><form id="privateForm"><div class="field"><label>Your name</label><input name="name" required placeholder="Name"></div><div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@example.com"></div><div class="field"><label>Event type</label><select name="type"><option>Birthday</option><option>Baby shower</option><option>Bridal shower</option><option>Private dinner</option><option>Other gathering</option></select></div><div class="field"><label>Preferred date</label><input name="date" type="date"></div><div class="field"><label>Guest count</label><input name="guests" type="number" min="1" placeholder="Approximate number"></div><div class="field"><label>Tell us more</label><textarea name="message" placeholder="A few details about your event..."></textarea></div><ons-button class="gold-button full" onclick="submitPrivate(event)">Send enquiry ↗</ons-button></form></div>`),100);
+    }
+    function submitPrivate(event) {
+      event.preventDefault();
+      const form=document.getElementById('privateForm');if(!form.reportValidity())return;
+      const data=new FormData(form),body=[...data.entries()].map(([k,v])=>`${k}: ${v}`).join('\n');
+      location.href=`mailto:info@commune-nyc.com?subject=Private%20event%20enquiry&body=${encodeURIComponent(body)}`;
+      closeDialog();toast('Opening your email app…');
+    }
+    function openNotifications(){goTab(4);toast('Manage your Commune alerts here.');}
+    async function enablePush() {
+      const status=document.getElementById('pushStatus');
+      try {
+        if(window.Capacitor?.isNativePlatform?.()&&window.Capacitor?.Plugins?.PushNotifications) {
+          const plugin=window.Capacitor.Plugins.PushNotifications,permission=await plugin.requestPermissions();
+          if(permission.receive==='granted'){await plugin.register();status.textContent='Push permission granted. Device registration requested.';toast('Push alerts enabled.');}
+          else status.textContent='Push permission was not granted.';
+        } else if('Notification' in window) {
+          const result=await Notification.requestPermission();status.textContent=result==='granted'?'Browser notifications enabled for this demo.':'Notification permission not granted.';
+          if(result==='granted')new Notification('Commune',{body:'You are set to hear about what’s happening.'});
+        } else status.textContent='Push notifications require the Capacitor Push Notifications plugin on a native build.';
+      } catch(e){status.textContent='Could not register notifications. Check native plugin setup.';}
+    }
+    function directions() {
+      const url='https://maps.google.com/?q=415+Classon+Ave+Brooklyn+NY+11238';
+      if(window.Capacitor?.Plugins?.Browser)window.Capacitor.Plugins.Browser.open({url});else window.open(url,'_blank');
+    }
+    document.addEventListener('init',event=>{
+      const page=event.target;
+      if(page.id==='homePage')renderHomeEvents();
+      if(page.id==='eventsPage')renderCalendar();
+      if(page.id==='menuPage')menuCategory('All',document.querySelector('#menuFilters .pill'));
+      if(page.id==='youPage')renderRsvps();
+    });
+    document.addEventListener('DOMContentLoaded',()=>{
+      setTimeout(()=>document.getElementById('splash').classList.add('hide'),900);
+    });
+  </script>
+
+  <ons-dialog id="appDialog" cancelable>
+    <div class="dialog-container"><div id="dialogContent"></div></div>
+  </ons-dialog>
+</body>
+</html>
+
